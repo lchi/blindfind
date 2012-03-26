@@ -3,31 +3,22 @@ from random import uniform
 from math import sqrt, pow
 
 RANGE = 50
+
 player = pyglet.media.Player()
-player.queue(pyglet.media.load('loop.wav', streaming=False))
+player.queue(pyglet.media.load('sounds/107351__ermfilm__baby-crying-1-sounds-at-ermfilm-pl.wav', streaming=False))
+#player.queue(pyglet.media.load('sounds/loop.wav', streaming=False))
 player.eos_action = player.EOS_LOOP
 player.position = (uniform(0,RANGE), uniform(0,RANGE), 0)
 player.min_distance = 5.0
 player.max_distance = 75.0
 player.play()
-print player.position
+
+# init some stuff
 window = pyglet.window.Window()
 key = pyglet.window.key
 clock = pyglet.clock
-"""
-@window.event
-def on_mouse_motion(mouseX, mouseY, dx, dy):
-    px, py, pz = player.position
-    print player.position
-    d = sqrt(pow(px,2) + pow(py,2))
-    print 'dx:', dx, 'dy:', dy
-    if d < 5:
-        print 'win'
-    newx = (px-dx) if abs(px-dx) < RANGE else px
-    newy = (py-dy) if abs(py-dy) < RANGE else py
-    player.position = newx, newy, pz
-"""
 
+# key events
 @window.event
 def on_key_press(symbol, modifiers):
     dx, dy = 0, 0
